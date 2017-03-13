@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVP", "MVP\MVP.csproj", "{F57D398E-70B2-4129-972F-47F966972C71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunControl", "RunControl\RunControl.csproj", "{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalGPIO", "ExternalGPIO\ExternalGPIO.csproj", "{2FA5995E-9B50-4823-B745-90A9E6C0A294}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F57D398E-70B2-4129-972F-47F966972C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57D398E-70B2-4129-972F-47F966972C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57D398E-70B2-4129-972F-47F966972C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57D398E-70B2-4129-972F-47F966972C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA5995E-9B50-4823-B745-90A9E6C0A294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA5995E-9B50-4823-B745-90A9E6C0A294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA5995E-9B50-4823-B745-90A9E6C0A294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA5995E-9B50-4823-B745-90A9E6C0A294}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
