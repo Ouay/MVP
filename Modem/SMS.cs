@@ -32,8 +32,11 @@ namespace Modem
 				ProcessStartInfo P = new ProcessStartInfo();
 				P.FileName = path + "/SendSMS.sh";
 				P.Arguments = "+41786268658 " + _message;
-				P.CreateNoWindow = true;
-				Process pro = Process.Start(P);
+				P.UseShellExecute = false;
+				P.RedirectStandardOutput = true;
+				Process pro = new Process();
+				pro.StartInfo = P;
+				pro.Start();
 				pro.WaitForExit();
 				return true;
 			}
@@ -41,6 +44,28 @@ namespace Modem
 			{
 				return false;
 			}
+		}
+
+		public List<SMSContent> ReadSMS()
+		{
+			List<SMSContent> listSMS = new List<SMSContent>();
+			ProcessStartInfo P = new ProcessStartInfo();
+			P.FileName = path + "/ReadSMS.sh";
+			Process process = new Process();
+			process.StartInfo = P;
+			process.Start();
+			string output = process.StandardOutput.ReadToEnd();
+			process.WaitForExit();
+			listSMS = ParseInput(output);
+
+			return listSMS;
+		}
+
+		private List<SMSContent> ParseInput(string output)
+		{
+			List<SMSContent> list = new List<SMSContent>();
+
+			return list;
 		}
 	}
 }
