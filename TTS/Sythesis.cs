@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Speech.Synthesis;
 
-namespace MVP
+
+
+namespace TTS
 {
-    class Program
+    class Sythesis
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        SpeechSynthesizer synth = new SpeechSynthesizer();
+
     }
 }
