@@ -40,8 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentification.cs" />
+    <Compile Include="CognitiveAccess.cs" />
+    <Compile Include="GenericEventArgs.cs" />
+    <Compile Include="Key.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sythesis.cs" />
+    <Compile Include="Synthetise.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RunControl\RunControl.csproj">
+      <Project>{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}</Project>
+      <Name>RunControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

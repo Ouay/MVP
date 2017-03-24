@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Speech.Synthesis;
-
-
 
 namespace TTS
 {
-    class Sythesis
-    {
-        SpeechSynthesizer synth = new SpeechSynthesizer();
-
-    }
+	class Key
+	{
+		public static string BingSpeech = @"da5e814bd94d49318ad024320bbebdec";
+	}
 }
