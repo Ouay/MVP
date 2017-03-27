@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace STT
 {
-	class Recognition
+	public class Recognition
 	{
 		public WaveInEvent waveInStream;
 		private static StreamSpeechRecognizer _recognizer;
@@ -21,13 +21,15 @@ namespace STT
 
 		public Recognition()
 		{
-			waveInStream = new WaveInEvent();
-			waveInStream.NumberOfBuffers = 2;
-			waveInStream.WaveFormat = new WaveFormat(16000, 1);
+			waveInStream = new WaveInEvent()
+			{
+				NumberOfBuffers = 2,
+				WaveFormat = new WaveFormat(16000, 1)
+			};
 			mem = new MemoryStream();
 			writer = new WaveFileWriter(mem, waveInStream.WaveFormat);
 			waveInStream.DataAvailable += WaveInStream_DataAvailable; ;
-			var modelPath = Path.Combine(Directory.GetCurrentDirectory(), "model/en-us");
+			var modelPath = Path.Combine(Directory.GetCurrentDirectory(), "VoiceModel/");
 			var dictionaryPath = Path.Combine(modelPath, "cmudict-en-us.dict");
 			var languageModelPath = Path.Combine(modelPath, "en-us.lm.dmp");
 			var configuration = new Configuration
@@ -47,21 +49,23 @@ namespace STT
 
 		public void StartRecording()
 		{
+			Console.WriteLine("Start");
 			waveInStream.NumberOfBuffers = 2;
 			waveInStream.StartRecording();
-			Thread.Sleep(2000);
+			Console.ReadKey();
 			recognize();
 		}
 
 		private void recognize()
 		{
 			waveInStream.StopRecording();
-			writer.Dispose();
-			waveInStream.Dispose();
+			mem.Position = 0;
 			_recognizer.StartRecognition(mem, new TimeFrame(mem.Length));
 			SpeechResult result = _recognizer.GetResult();
 			_recognizer.StopRecognition();
-			Console.WriteLine("result: " + result?.GetHypothesis());
+			Console.WriteLine("result: " + result.GetHypothesis());
+			Console.ReadKey();
+			Console.ReadKey();
 		}
 	}
 }
