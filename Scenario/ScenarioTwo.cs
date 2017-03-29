@@ -5,9 +5,9 @@ using TTS;
 
 namespace Scenario
 {
-	public class ScenarioOne : GenericScenario
+	public class ScenarioTwo : GenericScenario
 	{
-		public ScenarioOne()
+		public ScenarioTwo()
 		{
 			LogControl.Write("[[SCENARIO 1] START]");
 			stt = new RecognitionCognitive();

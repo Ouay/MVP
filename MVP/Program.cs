@@ -13,7 +13,7 @@ namespace MVP
     {
         static void Main(string[] args)
         {
-			SoundPlayer.Play("Alvaro_Soler_-_Sofia.wav");
+			
         }
     }
 }
