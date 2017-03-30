@@ -66,6 +66,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Scenario\Scenario.csproj">
+      <Project>{DFF34D85-D141-49C4-B197-A9DE49449E9C}</Project>
+      <Name>Scenario</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sound\Sound.csproj">
       <Project>{cf43c7da-0a4f-4a6e-9afa-b84159c12375}</Project>
       <Name>Sound</Name>

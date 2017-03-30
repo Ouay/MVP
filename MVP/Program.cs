@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TTS;
 using Sound;
+using Scenario;
 
 namespace MVP
 {
@@ -13,7 +14,8 @@ namespace MVP
     {
         static void Main(string[] args)
         {
-			
+			ScenarioOne o = new ScenarioOne();
+
         }
     }
 }

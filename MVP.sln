@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26206.0
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVP", "MVP\MVP.csproj", "{F57D398E-70B2-4129-972F-47F966972C71}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTS", "TTS\TTS.csproj", "{D3900EC1-901A-4184-A3AD-513EAB9F9675}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sound", "Sound\Sound.csproj", "{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scenario", "Scenario\Scenario.csproj", "{DFF34D85-D141-49C4-B197-A9DE49449E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF34D85-D141-49C4-B197-A9DE49449E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF34D85-D141-49C4-B197-A9DE49449E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF34D85-D141-49C4-B197-A9DE49449E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF34D85-D141-49C4-B197-A9DE49449E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
