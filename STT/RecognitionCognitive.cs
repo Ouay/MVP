@@ -13,7 +13,7 @@ namespace STT
 {
 	public class RecognitionCognitive
 	{
-		public void Record()
+		public bool Record()
 		{
 			try
 			{
@@ -32,7 +32,10 @@ namespace STT
 			catch (Exception e)
 			{
 				LogControl.Write("[RECORDING] : ERROR | " + e);
+				Thread.Sleep(3000);
+				return false;
 			}
+			return true;
 		}
 
 		Authentification auth;

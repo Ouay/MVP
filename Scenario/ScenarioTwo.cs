@@ -24,7 +24,7 @@ namespace Scenario
 
 		private string WaitSMS()
 		{
-			
+			return string.Empty;	
 		}
 	}
 }

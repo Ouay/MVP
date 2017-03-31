@@ -61,11 +61,16 @@ namespace Scenario
 			string response= string.Empty;
 			while (search)
 			{
-				stt.Record();
+				if(!stt.Record())
+					continue;
 				response = stt.SetupRequest();
 				foreach (string s in phrase.Split(' '))
+				{
+					if (s == null || response == null)
+						continue;
 					if (response.Contains(s))
 						search = false;
+				}
 			}
 			return response;
 		}
