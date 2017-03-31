@@ -11,24 +11,25 @@ namespace Scenario
 	{
 		public ScenarioOne(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms)
 		{
-			LogControl.Write("[[SCENARIO 1] START]");
+			LogControl.Write("[SCENARIO 1] :  Loaded]");
 			stt = _stt;
 			tts = _tts;
 			smsHandler = _sms;
-			StartSimulation();
 		}
 
-		private void StartSimulation()
+		public override void Start()
 		{
+			LogControl.Write("[SCENARIO 1] : Start");
 			//Vérifie si ya un appel a l'aide
 			string response = Listen();
-			smsHandler.SendSMS("", response);
+			smsHandler.SendSMS("+41786268658", response);
 			response = WaitSMS();
 			tts.Say(response);
 		}
 
 		private string WaitSMS()
 		{
+			LogControl.Write("[SCENARIO 1] : Attente d'un SMS");
 			string response = string.Empty;
 			bool noResponse = true;
 			while (noResponse)
@@ -46,7 +47,7 @@ namespace Scenario
 		{
 			foreach(SMSContent s in list)
 			{
-				if (s.Number == "+41782882")
+				if (s.Number == "+41789476812")
 					return s.Message;
 			}
 			return string.Empty;
@@ -54,6 +55,7 @@ namespace Scenario
 
 		private string Listen()
 		{
+			LogControl.Write("[SCENARIO 1] : listening");
 			string phrase = @"besoin aide";
 			bool search = true;
 			string response= string.Empty;

@@ -12,12 +12,16 @@ namespace Scenario
 		protected CognitiveAccess tts;
 		protected SMSHandler smsHandler;
 
-		public void Start()
+		public virtual void Start()
 		{
 			stt = new RecognitionCognitive();
 			tts = new CognitiveAccess();
 			smsHandler = new SMSHandler();
 			ScenarioOne one = new ScenarioOne(stt, tts, smsHandler);
+			one.Start();
+
+			ScenarioTwo two = new ScenarioTwo(stt, tts, smsHandler);
+			two.Start();
 		}
 	}
 }
