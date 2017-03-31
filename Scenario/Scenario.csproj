@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenario.cs" />
+    <Compile Include="GenericScenario.cs" />
     <Compile Include="ScenarioOne.cs" />
     <Compile Include="ScenarioThree.cs" />
     <Compile Include="ScenarioTwo.cs" />

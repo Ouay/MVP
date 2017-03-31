@@ -66,6 +66,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Modem\Modem.csproj">
+      <Project>{19CF5BB8-999F-44A7-8616-1ABD05C936B9}</Project>
+      <Name>Modem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Scenario\Scenario.csproj">
       <Project>{DFF34D85-D141-49C4-B197-A9DE49449E9C}</Project>
       <Name>Scenario</Name>

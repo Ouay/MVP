@@ -7,12 +7,12 @@ namespace Scenario
 {
 	public class ScenarioTwo : GenericScenario
 	{
-		public ScenarioTwo()
+		public ScenarioTwo(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms)
 		{
-			LogControl.Write("[[SCENARIO 1] START]");
-			stt = new RecognitionCognitive();
-			tts = new CognitiveAccess();
-			smsHandler = new SMSHandler();
+			LogControl.Write("[[SCENARIO 2] START]");
+			stt = _stt;
+			tts = _tts;
+			smsHandler = _sms;
 		}
 	}
 }

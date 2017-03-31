@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 using TTS;
 using Sound;
 using Scenario;
+using Modem;
 
 namespace MVP
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-			ScenarioOne o = new ScenarioOne();
-
+			GenericScenario scenario = new GenericScenario();
+			scenario.Start();
         }
-    }
+	}
 }
