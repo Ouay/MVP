@@ -3,6 +3,7 @@ using Modem;
 using RunControl;
 using STT;
 using TTS;
+using System.Collections.Generic;
 
 namespace Scenario
 {
@@ -23,13 +24,32 @@ namespace Scenario
 			string response = Listen();
 			smsHandler.SendSMS("", response);
 			response = WaitSMS();
+			tts.Say(response);
 		}
 
 		private string WaitSMS()
 		{
 			string response = string.Empty;
+			bool noResponse = true;
+			while (noResponse)
+			{
+				List<SMSContent> list = smsHandler.ReadSMS();
+				response = ParseContent(list);
+				if (response != string.Empty)
+					noResponse = false;
+			}
 
 			return response;
+		}
+
+		private string ParseContent(List<SMSContent> list)
+		{
+			foreach(SMSContent s in list)
+			{
+				if (s.Number == "+41782882")
+					return s.Message;
+			}
+			return string.Empty;
 		}
 
 		private string Listen()

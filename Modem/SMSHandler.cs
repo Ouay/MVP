@@ -30,5 +30,12 @@ namespace Modem
 			SMS sms = new SMS(this._Path);
 			sms.Send(_phoneNb, _msg);
 		}
+
+		public List<SMSContent> ReadSMS()
+		{
+			SMS sms = new SMS(this._Path);
+			List<SMSContent> t = sms.ReadSMS();
+			return t;
+		}
 	}
 }
