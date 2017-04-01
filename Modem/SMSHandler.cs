@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RunControl;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,31 @@ namespace Modem
 		public SMSHandler()
 		{
 			_Path  = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+		}
+
+		public string GetContentSMS()
+		{
+			SMS sms = new SMS(this._Path);
+			string Content = sms.ReadSMSString();
+			return Content;
+		}
+
+		public string GetDateSMS()
+		{
+			string count = "";
+			try
+			{
+				string Content = GetContentSMS();
+				count = "";
+				string[] counter = Content.Split(new string[] { "<Date>", "</Date>" }, StringSplitOptions.RemoveEmptyEntries);
+				count = counter[1];
+			}
+			catch(IndexOutOfRangeException outOfRange)
+			{
+				count = "";
+			}
+			LogControl.Write("Date " + count);
+			return count;
 		}
 
 		/// <summary>

@@ -52,6 +52,10 @@
       <Project>{1F6C8F4A-D581-446D-A038-13EBF91D2CF9}</Project>
       <Name>RunControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sound\Sound.csproj">
+      <Project>{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}</Project>
+      <Name>Sound</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
