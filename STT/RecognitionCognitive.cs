@@ -20,7 +20,7 @@ namespace STT
 				LogControl.Write("[RECORDING] : Start recording");
 				ProcessStartInfo P = new ProcessStartInfo();
 				P.FileName = "arecord";
-				P.Arguments = "-D plughw:0,0 -d 3 record.wav -f cd";
+				P.Arguments = "-D plughw:1,0 -d 3 record.wav -f cd";
 				P.UseShellExecute = false;
 				P.RedirectStandardOutput = true;
 				Process pro = new Process();
