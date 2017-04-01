@@ -9,6 +9,7 @@ using Sound;
 using Scenario;
 using Modem;
 using ExternalGPIO;
+using GPIO;
 
 namespace MVP
 {
@@ -19,8 +20,13 @@ namespace MVP
         {
 			//GenericScenario scenario = new GenericScenario();
 			//scenario.Start();
-			LedControl led = new LedControl();
-			led.SetColor(LedControl.Mode.ScrollWhite);
-        }
+			//LedControl led = new LedControl();
+			//led.SetColor(LedControl.Mode.ScrollWhite);
+			GPIOControl.SetLed(GPIOControl.Mode.Yellow);
+			GPIOControl.SetLed(GPIOControl.Mode.DimmingWhite);
+			GPIOControl.SetLed(GPIOControl.Mode.ScrollGreen);
+			GPIOControl.SetLed(GPIOControl.Mode.ScrollWhite);
+
+		}
 	}
 }
