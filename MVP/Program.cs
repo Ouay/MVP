@@ -8,6 +8,7 @@ using TTS;
 using Sound;
 using Scenario;
 using Modem;
+using ExternalGPIO;
 
 namespace MVP
 {
@@ -16,8 +17,10 @@ namespace MVP
 
         static void Main(string[] args)
         {
-			GenericScenario scenario = new GenericScenario();
-			scenario.Start();
+			//GenericScenario scenario = new GenericScenario();
+			//scenario.Start();
+			LedControl led = new LedControl();
+			led.SetColor(LedControl.Mode.ScrollWhite);
         }
 	}
 }

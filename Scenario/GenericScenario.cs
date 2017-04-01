@@ -14,8 +14,9 @@ namespace Scenario
 
 		public virtual void Start()
 		{
-			stt = new RecognitionCognitive();
+			
 			tts = new CognitiveAccess();
+			stt = new RecognitionCognitive();
 			smsHandler = new SMSHandler();
 			ScenarioOne one = new ScenarioOne(stt, tts, smsHandler);
 			one.Start();
