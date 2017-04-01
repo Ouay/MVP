@@ -6,6 +6,8 @@ using TTS;
 using Sound;
 using System.IO;
 using System.Reflection;
+using GPIO;
+using System.Threading;
 
 namespace Scenario
 {
@@ -22,12 +24,18 @@ namespace Scenario
 
 		public override void Start()
 		{
+			GPIOControl.SetLed(GPIOControl.Mode.Reflexion);
 			LogControl.Write("[SCENARIO 2] : Start");
+			GPIOControl.SetLed(GPIOControl.Mode.StandBy);
 			string response = WaitSMS();
+			GPIOControl.SetLed(GPIOControl.Mode.Speak);
 			tts.Say(response);
 			soundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 			string toSend = "\"" + Listen() +"\"";
 			smsHandler.SendSMS("+41789476812", toSend);
+			GPIOControl.SetLed(GPIOControl.Mode.Reflexion);
+			Thread.Sleep(1000);
+			GPIOControl.SetLed(GPIOControl.Mode.StandBy);
 		}
 
 		private string Listen()
