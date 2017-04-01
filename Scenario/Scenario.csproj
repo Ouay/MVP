@@ -62,6 +62,10 @@
       <Project>{1f6c8f4a-d581-446d-a038-13ebf91d2cf9}</Project>
       <Name>RunControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sound\Sound.csproj">
+      <Project>{CF43C7DA-0A4F-4A6E-9AFA-B84159C12375}</Project>
+      <Name>Sound</Name>
+    </ProjectReference>
     <ProjectReference Include="..\STT\STT.csproj">
       <Project>{8ACFEC3B-0C8B-4757-9B83-97B9D5E6B877}</Project>
       <Name>STT</Name>

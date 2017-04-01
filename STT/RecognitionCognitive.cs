@@ -13,14 +13,14 @@ namespace STT
 {
 	public class RecognitionCognitive
 	{
-		public bool Record()
+		public bool Record(int second = 3)
 		{
 			try
 			{
 				LogControl.Write("[RECORDING] : Start recording");
 				ProcessStartInfo P = new ProcessStartInfo();
 				P.FileName = "arecord";
-				P.Arguments = "-D plughw:2,0 -d 3 record.wav -f cd";
+				P.Arguments = "-D plughw:2,0 -d " + second + " record.wav -f cd";
 				P.UseShellExecute = false;
 				P.RedirectStandardOutput = true;
 				Process pro = new Process();

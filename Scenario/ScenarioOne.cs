@@ -5,17 +5,22 @@ using STT;
 using TTS;
 using System.Collections.Generic;
 using GPIO;
+using Sound;
+using System.IO;
+using System.Reflection;
+using System.Threading;
 
 namespace Scenario
 {
 	public class ScenarioOne : GenericScenario
 	{
-		public ScenarioOne(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms)
+		public ScenarioOne(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms, SoundPlayer _sound)
 		{
 			LogControl.Write("[SCENARIO 1] :  Loaded]");
 			stt = _stt;
 			tts = _tts;
 			smsHandler = _sms;
+			soundPlayer = _sound;
 		}
 
 		public override void Start()
@@ -29,6 +34,8 @@ namespace Scenario
 			response = WaitSMS();
 			GPIOControl.SetLed(GPIOControl.Mode.Speak);
 			tts.Say(response);
+			Thread.Sleep(1000);
+			soundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 			GPIOControl.SetLed(GPIOControl.Mode.Help);
 		}
 

@@ -110,12 +110,13 @@ namespace TTS
 					FileStream(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav", FileMode.OpenOrCreate, FileAccess.Write);
 				s.CopyTo(fileStream);
 				fileStream.Dispose();
+				s.Dispose();
 			}
 			catch(Exception ex)
 			{
 				LogControl.Write("[TTS] : Saving file failed | ERROR : " + ex.Message);
 			}
-			SoundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
+			LogControl.Write("[TTS] : File Saved");
 		}
 
 		public void ErrorHandler(object sender, GenericEventArgs<Exception> e)

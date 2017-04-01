@@ -20,7 +20,7 @@ namespace MVP
         static void Main(string[] args)
         {
 			GPIOControl.SetLed(GPIOControl.Mode.StandBy);
-			Thread.Sleep(1000);
+			Thread.Sleep(10);
 			GenericScenario scenario = new GenericScenario();
 			scenario.Start();
 		}
