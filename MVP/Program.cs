@@ -10,6 +10,7 @@ using Scenario;
 using Modem;
 using ExternalGPIO;
 using GPIO;
+using System.Threading;
 
 namespace MVP
 {
@@ -18,15 +19,10 @@ namespace MVP
 
         static void Main(string[] args)
         {
-			//GenericScenario scenario = new GenericScenario();
-			//scenario.Start();
-			//LedControl led = new LedControl();
-			//led.SetColor(LedControl.Mode.ScrollWhite);
-			GPIOControl.SetLed(GPIOControl.Mode.Yellow);
-			GPIOControl.SetLed(GPIOControl.Mode.DimmingWhite);
-			GPIOControl.SetLed(GPIOControl.Mode.ScrollGreen);
-			GPIOControl.SetLed(GPIOControl.Mode.ScrollWhite);
-
+			GPIOControl.SetLed(GPIOControl.Mode.StandBy);
+			Thread.Sleep(1000);
+			GenericScenario scenario = new GenericScenario();
+			scenario.Start();
 		}
 	}
 }

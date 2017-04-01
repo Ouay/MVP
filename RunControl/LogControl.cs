@@ -22,7 +22,7 @@ namespace RunControl
 			}
 			catch(Exception e)
 			{
-
+				e.ToString();
 			}
 		}
 

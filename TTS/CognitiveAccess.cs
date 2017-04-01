@@ -1,4 +1,5 @@
 ﻿using RunControl;
+using Sound;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -114,6 +115,7 @@ namespace TTS
 			{
 				LogControl.Write("[TTS] : Saving file failed | ERROR : " + ex.Message);
 			}
+			SoundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 		}
 
 		public void ErrorHandler(object sender, GenericEventArgs<Exception> e)

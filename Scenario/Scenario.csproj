@@ -50,6 +50,10 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GPIO\GPIO.csproj">
+      <Project>{CDD58C15-709C-42DE-BCB6-3C5BFA625CE4}</Project>
+      <Name>GPIO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modem\Modem.csproj">
       <Project>{19cf5bb8-999f-44a7-8616-1abd05c936b9}</Project>
       <Name>Modem</Name>

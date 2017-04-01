@@ -13,7 +13,7 @@ namespace Sound
 				LogControl.Write("[SOUNDPLAYER] : Playing sound");
 				ProcessStartInfo P = new ProcessStartInfo();
 				P.FileName = "aplay";
-				P.Arguments = "-Dhw:2,0 " + _filePath;
+				P.Arguments = "-Dhw:1,0 " + _filePath;
 				P.UseShellExecute = false;
 				P.RedirectStandardOutput = true;
 				Process pro = new Process();

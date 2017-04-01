@@ -12,10 +12,11 @@ namespace GPIO
 	{
 		public enum Mode
 		{
-			ScrollWhite,
-			DimmingWhite,
-			ScrollGreen,
-			Yellow
+			Boot,
+			Reflexion,
+			Help,
+			StandBy,
+			Speak
 		}
 
 		public enum State
@@ -29,7 +30,6 @@ namespace GPIO
 
 		public static void SetLed(Mode _mode)
 		{
-			LogControl.Write("[GPIOCONTROL] : change color");
 			try
 			{
 				if (Init.WiringPiSetup() != -1)
@@ -40,33 +40,35 @@ namespace GPIO
 
 					switch (_mode)
 					{
-						case Mode.ScrollWhite:
+						case Mode.Reflexion:
 							GPIO.digitalWrite(_first, (int)State.LOW);
 							GPIO.digitalWrite(_second, (int)State.LOW);
 							GPIO.digitalWrite(_third, (int)State.LOW);
-							Console.WriteLine("ScrollWhite");
+							LogControl.Write("[GPIOCONTROL] : Set Mode Reflexion");
 							break;
-						case Mode.DimmingWhite:
+						case Mode.StandBy:
 							GPIO.digitalWrite(_first, (int)State.LOW);
 							GPIO.digitalWrite(_second, (int)State.HIGH);
 							GPIO.digitalWrite(_third, (int)State.LOW);
+							LogControl.Write("[GPIOCONTROL] : Set Mode StandBy");
 							break;
-						case Mode.ScrollGreen:
+						case Mode.Help:
 							GPIO.digitalWrite(_first, (int)State.LOW);
 							GPIO.digitalWrite(_second, (int)State.HIGH);
 							GPIO.digitalWrite(_third, (int)State.HIGH);
-							Console.WriteLine("ScrollGreen");
+							LogControl.Write("[GPIOCONTROL] : Set Mode Help");
 							break;
-						case Mode.Yellow:
+						case Mode.Speak:
 							GPIO.digitalWrite(_first, (int)State.LOW);
 							GPIO.digitalWrite(_second, (int)State.LOW);
 							GPIO.digitalWrite(_third, (int)State.HIGH);
+							LogControl.Write("[GPIOCONTROL] : Set Mode Speak");
 							break;
-						default:
+						case Mode.Boot:
 							GPIO.digitalWrite(_first, (int)State.HIGH);
 							GPIO.digitalWrite(_second, (int)State.LOW);
-							GPIO.digitalWrite(_third, (int)State.HIGH);
-							Console.WriteLine("Default");
+							GPIO.digitalWrite(_third, (int)State.LOW);
+							LogControl.Write("[GPIOCONTROL] : Set Mode Boot");
 							break;
 					}
 				}
@@ -79,7 +81,7 @@ namespace GPIO
 			{
 				LogControl.Write("[GPIOCONTROL] : Error | " + e.Message);
 			}
-			Thread.Sleep(5000);
+			Thread.Sleep(500);
 		}
 	}
 }

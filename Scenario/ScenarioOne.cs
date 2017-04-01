@@ -4,6 +4,7 @@ using RunControl;
 using STT;
 using TTS;
 using System.Collections.Generic;
+using GPIO;
 
 namespace Scenario
 {
@@ -22,32 +23,47 @@ namespace Scenario
 			LogControl.Write("[SCENARIO 1] : Start");
 			//Vérifie si ya un appel a l'aide
 			string response = Listen();
-			smsHandler.SendSMS("+41786268658", response);
+			GPIOControl.SetLed(GPIOControl.Mode.Reflexion);
+			//smsHandler.SendSMS("+41786268658", response);
+			smsHandler.SendSMS("+41789476812", response);
 			response = WaitSMS();
+			GPIOControl.SetLed(GPIOControl.Mode.Speak);
 			tts.Say(response);
+			GPIOControl.SetLed(GPIOControl.Mode.Help);
 		}
 
 		private string WaitSMS()
 		{
-			LogControl.Write("[SCENARIO 1] : Attente d'un SMS");
-			string response = string.Empty;
-			bool noResponse = true;
-			while (noResponse)
+			try
 			{
-				List<SMSContent> list = smsHandler.ReadSMS();
-				response = ParseContent(list);
-				if (response != string.Empty)
-					noResponse = false;
+				LogControl.Write("[SCENARIO 1] : Attente d'un SMS");
+				string DateSMS = smsHandler.GetDateSMS();
+				string response = string.Empty;
+				bool noResponse = true;
+				while (noResponse)
+				{
+					response = smsHandler.GetDateSMS();
+					if (DateSMS != response)
+						noResponse = false;
+				}
+				LogControl.Write(response);
+				string Conten = smsHandler.GetContentSMS();
+				string[] counter = Conten.Split(new string[] { "<Content>", "</Content>" }, StringSplitOptions.RemoveEmptyEntries);
+				return counter[1];
 			}
-
-			return response;
+			catch(IndexOutOfRangeException e)
+			{
+				LogControl.Write("Out of range");
+				return "";
+			}
 		}
 
 		private string ParseContent(List<SMSContent> list)
 		{
 			foreach(SMSContent s in list)
 			{
-				if (s.Number == "+41789476812")
+				//if (s.Number == "+41789476812")
+				if(s.Number == "+41786268658")
 					return s.Message;
 			}
 			return string.Empty;
@@ -72,7 +88,7 @@ namespace Scenario
 						search = false;
 				}
 			}
-			return response;
+			return "J'ai besoin d'aide, je suis tombé";
 		}
 	}
 }

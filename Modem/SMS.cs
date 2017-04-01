@@ -1,7 +1,10 @@
-﻿using System;
+﻿using RunControl;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +22,24 @@ namespace Modem
 			path = _path;
 		}
 
+		internal string ReadSMSString()
+		{
+			List<SMSContent> listSMS = new List<SMSContent>();
+			ProcessStartInfo P = new ProcessStartInfo();
+			P.FileName = path + "/ReadSMS.sh";
+			P.RedirectStandardOutput = true;
+			P.UseShellExecute = false;
+			Process process = new Process();
+			process.StartInfo = P;
+			process.Start();
+			string text = "";
+			while (!process.StandardOutput.EndOfStream)
+				text += process.StandardOutput.ReadLine();
+			LogControl.Write("Text = " + text);
+			process.WaitForExit();
+			return text;
+		}
+
 		/// <summary>
 		/// Send a message using SendSMS.sh script in path
 		/// </summary>
@@ -27,11 +48,12 @@ namespace Modem
 		/// <returns></returns>
 		public bool Send(string _number, string _message)
 		{
+			LogControl.Write("[SMS] : Sending an SMS");
 			try
 			{
 				ProcessStartInfo P = new ProcessStartInfo();
 				P.FileName = path + "/SendSMS.sh";
-				P.Arguments = "+41786268658 " + _message;
+				P.Arguments = _number + " " + _message;
 				P.UseShellExecute = false;
 				P.RedirectStandardOutput = true;
 				Process pro = new Process();
@@ -42,6 +64,7 @@ namespace Modem
 			}
 			catch(Exception e)
 			{
+				LogControl.Write("[SMS] : Error at send | " + e.Message);
 				return false;
 			}
 		}
@@ -51,20 +74,28 @@ namespace Modem
 			List<SMSContent> listSMS = new List<SMSContent>();
 			ProcessStartInfo P = new ProcessStartInfo();
 			P.FileName = path + "/ReadSMS.sh";
+			P.RedirectStandardOutput = true;
+			P.UseShellExecute = false;
 			Process process = new Process();
 			process.StartInfo = P;
 			process.Start();
-			string output = process.StandardOutput.ReadToEnd();
-			process.WaitForExit();
-			listSMS = ParseInput(output);
+			string text = "";
+			while (!process.StandardOutput.EndOfStream)
+				text += process.StandardOutput.ReadLine();
 
+			process.WaitForExit();
+			listSMS = ParseInput(text);
 			return listSMS;
 		}
 
 		private List<SMSContent> ParseInput(string output)
 		{
 			List<SMSContent> list = new List<SMSContent>();
-
+			int count = 0;
+			string[] counter = output.Split(new string[] { "<count>", "</count>" },StringSplitOptions.RemoveEmptyEntries);
+			count = Int32.Parse(counter[1]);
+			LogControl.Write("Counted " + count + " SMS");
+			string[] Msg = counter[2].Split(new string[] { "<Message>", "</Message>" }, StringSplitOptions.RemoveEmptyEntries);
 			return list;
 		}
 	}
