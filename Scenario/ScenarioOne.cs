@@ -28,15 +28,20 @@ namespace Scenario
 			LogControl.Write("[SCENARIO 1] : Start");
 			//Vérifie si ya un appel a l'aide
 			string response = Listen();
+			tts.Say("Je suis en train de contacter des secours...");
+			soundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 			GPIOControl.SetLed(GPIOControl.Mode.Reflexion);
+
+			Thread.Sleep(1000);
+
 			//smsHandler.SendSMS("+41786268658", response);
 			smsHandler.SendSMS("+41789476812", response);
 			response = WaitSMS();
 			GPIOControl.SetLed(GPIOControl.Mode.Speak);
 			tts.Say(response);
-			Thread.Sleep(1000);
 			soundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 			GPIOControl.SetLed(GPIOControl.Mode.Help);
+			Thread.Sleep(10000);
 		}
 
 		private string WaitSMS()
