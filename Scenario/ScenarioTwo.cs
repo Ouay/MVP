@@ -13,6 +13,7 @@ namespace Scenario
 {
 	public class ScenarioTwo : GenericScenario
 	{
+		private string phone = "+41789476812";
 		public ScenarioTwo(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms, SoundPlayer _sound)
 		{
 			LogControl.Write("[SCENARIO 2] : Loaded]");
@@ -32,7 +33,7 @@ namespace Scenario
 			tts.Say(response);
 			soundPlayer.Play(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/say.wav");
 			string toSend = "\"" + Listen() +"\"";
-			smsHandler.SendSMS("+41789476812", toSend);
+			smsHandler.SendSMS(phone, toSend);
 			GPIOControl.SetLed(GPIOControl.Mode.Reflexion);
 			Thread.Sleep(1000);
 			GPIOControl.SetLed(GPIOControl.Mode.StandBy);

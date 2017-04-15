@@ -24,8 +24,8 @@ namespace Scenario
 			soundPlayer = new SoundPlayer();
 			GPIOControl.SetLed(GPIOControl.Mode.StandBy);
 			//tts.Say("Bonjour, je suis Loic");
-			ScenarioOne one = new ScenarioOne(stt, tts, smsHandler, soundPlayer);
-			one.Start();
+			//ScenarioOne one = new ScenarioOne(stt, tts, smsHandler, soundPlayer);
+			//one.Start();
 
 			ScenarioTwo two = new ScenarioTwo(stt, tts, smsHandler, soundPlayer);
 			two.Start();

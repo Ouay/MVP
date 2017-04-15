@@ -14,6 +14,7 @@ namespace Scenario
 {
 	public class ScenarioOne : GenericScenario
 	{
+		private string phone = "+41789476812";
 		public ScenarioOne(RecognitionCognitive _stt, CognitiveAccess _tts, SMSHandler _sms, SoundPlayer _sound)
 		{
 			LogControl.Write("[SCENARIO 1] :  Loaded]");
@@ -35,7 +36,7 @@ namespace Scenario
 			Thread.Sleep(1000);
 
 			//smsHandler.SendSMS("+41786268658", response);
-			smsHandler.SendSMS("+41789476812", response);
+			smsHandler.SendSMS(phone, response);
 			response = WaitSMS();
 			GPIOControl.SetLed(GPIOControl.Mode.Speak);
 			tts.Say(response);
