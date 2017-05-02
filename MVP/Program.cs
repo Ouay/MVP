@@ -8,7 +8,6 @@ using TTS;
 using Sound;
 using Scenario;
 using Modem;
-using ExternalGPIO;
 using GPIO;
 using System.Threading;
 

@@ -66,10 +66,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExternalGPIO\ExternalGPIO.csproj">
-      <Project>{2fa5995e-9b50-4823-b745-90a9e6c0a294}</Project>
-      <Name>ExternalGPIO</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GPIO\GPIO.csproj">
       <Project>{cdd58c15-709c-42de-bcb6-3c5bfa625ce4}</Project>
       <Name>GPIO</Name>
